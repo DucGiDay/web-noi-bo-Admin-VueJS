@@ -5,7 +5,7 @@ export default [
       component: () => import("../CategoryList.vue"),
     },
     {
-      path: "categories/create",
+      path: "category/create",
       name: "CategoryCreate",
       component: () => import("../CategoryList.vue"),
     },

@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { FilterMatchMode } from 'primevue/api';
 import { ref, onMounted, onBeforeMount } from 'vue';
 import ProductService from '@/service/ProductService';
@@ -317,4 +317,4 @@ const initFilters = () => {
 
 <style scoped lang="scss">
 @import '@/assets/demo/styles/badges.scss';
-</style>
+</style> -->

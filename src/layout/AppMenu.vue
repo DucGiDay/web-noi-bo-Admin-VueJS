@@ -7,15 +7,15 @@ const model = ref([
   {
     label: 'Danh mục',
     items: [
-      { label: 'Danh sách danh mục', icon: 'pi pi-fw pi-prime', to: '/categories' },
-      { label: 'Tạo danh mục', icon: 'pi pi-fw pi-desktop', to: '/category/create'}
+      { label: 'Danh sách danh mục', icon: 'pi pi-fw pi-prime', to: '/pages/categories' },
+      { label: 'Tạo danh mục', icon: 'pi pi-fw pi-desktop', to: '/pages/category/create'}
     ]
   },
   {
     label: 'Sản phẩm',
     items: [
-      { label: 'Danh sách sản phẩm', icon: 'pi pi-fw pi-prime', to: '/products' },
-      { label: 'Thêm sản phẩm', icon: 'pi pi-fw pi-desktop', to: '/products/create'}
+      { label: 'Danh sách sản phẩm', icon: 'pi pi-fw pi-prime', to: '/pages/products' },
+      { label: 'Thêm sản phẩm', icon: 'pi pi-fw pi-desktop', to: '/pages/products/create'}
     ]
   },
     
