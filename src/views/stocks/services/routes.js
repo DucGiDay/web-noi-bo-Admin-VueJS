@@ -4,8 +4,8 @@ import RoutesProduct from "../products/services/routes";
 
 export default [
   {
-    path: "pages",
-    name: "Pages",
+    path: "stocks",
+    name: "Stocks",
     children: [
       ...RoutesCategory,
       ...RoutesProduct

@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import AppLayout from '@/layout/AppLayout.vue';
-import RoutesPage from '@/views/pages/services/routes.js'
+import RoutesStock from '@/views/stocks/services/routes'
+import RoutesUser from '@/views/user/services/routes'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -11,39 +12,52 @@ const router = createRouter({
       children: [
         {
           path: '/',
-          name: 'dashboard',
+          name: 'Home',
           component: () => import('@/views/Dashboard.vue')
         },
-        ...RoutesPage
+        ...RoutesStock,
+        ...RoutesUser
       ],
     },
     {
       path: '/landing',
-      name: 'landing',
-      component: () => import('@/views/pages/Landing.vue')
+      name: 'Landing',
+      component: () => import('@/views/demo/Landing.vue')
     },
     {
-      path: '/pages/notfound',
-      name: 'notfound',
-      component: () => import('@/views/pages/NotFound.vue')
+      path: '/stocks/notfound',
+      name: 'Notfound',
+      component: () => import('@/views/demo/NotFound.vue')
     },
 
     {
       path: '/auth/login',
-      name: 'login',
-      component: () => import('@/views/pages/auth/Login.vue')
+      name: 'Login',
+      component: () => import('@/views/user/auth/Login.vue')
     },
     {
       path: '/auth/access',
-      name: 'accessDenied',
-      component: () => import('@/views/pages/auth/Access.vue')
+      name: 'AccessDenied',
+      component: () => import('@/views/user/auth/Access.vue')
     },
     {
       path: '/auth/error',
-      name: 'error',
-      component: () => import('@/views/pages/auth/Error.vue')
+      name: 'Error',
+      component: () => import('@/views/user/auth/Error.vue')
     }
   ]
+});
+
+router.beforeEach(async (to) => {
+  const token = localStorage.getItem('token');
+  // redirect to login page if not logged in and trying to access a restricted page
+  const publicPages = ['/auth/login', '/auth/register'];
+  const authRequired = !publicPages.includes(to.path);
+  const auth = token;
+
+  if (authRequired && !auth) {
+    return '/auth/login';
+  }
 });
 
 export default router;

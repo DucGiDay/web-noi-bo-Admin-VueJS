@@ -1,6 +1,7 @@
 import axios from "axios";
 
-export * as API_PAGES from "@/views/pages/services/api";
+export * as API_STOCK from "@/views/stocks/services/api";
+export * as API_USER from "@/views/user/services/api";
 
 export const AxiosInstance = axios.create({
   baseURL: "http://localhost:5000", //

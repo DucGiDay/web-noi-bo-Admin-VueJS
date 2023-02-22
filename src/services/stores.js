@@ -1,7 +1,8 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 
-export * as STORE_PAGES from "../views/pages/services/store";
+export * as STORE_STOCK from "../views/stocks/services/stores";
+export * as STORE_USER from "../views/user/services/stores";
 
 export const StoreApp = defineStore("StoreApp", () => {
   // Các hàm khác

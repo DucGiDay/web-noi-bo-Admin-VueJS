@@ -1,8 +1,8 @@
 <script setup>
 import { onMounted } from 'vue';
-import {STORE_PAGES} from '../../../services/store';
+import {STORE_STOCK} from '../../../services/stores';
 
-const STORE_PRODUCT = STORE_PAGES.StoreProduct();
+const STORE_PRODUCT = STORE_STOCK.StoreProduct();
 
 const products = STORE_PRODUCT.onGetterProducts
 onMounted(() => {
