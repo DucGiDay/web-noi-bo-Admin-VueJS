@@ -27,12 +27,12 @@
 }
 
 .customer-badge {
-    &.status-qualified {
+    &.status-active {
         background: #C8E6C9;
         color: #256029;
     }
 
-    &.status-unqualified {
+    &.status-disable {
         background: #FFCDD2;
         color: #C63737;
     }

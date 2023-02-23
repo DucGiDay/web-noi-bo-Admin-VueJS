@@ -10,6 +10,23 @@ export const StoreAuth = defineStore("StoreAuth", () => {
   const toast = useToast();
   const router = useRouter();
   const confirm = useConfirm();
+  const confirmPosition = () => {
+    confirm.require({
+      group: 'positionDialog',
+      message: 'Do you want to go to Sign In page?',
+      header: 'User created successfully',
+      icon: 'pi pi-info-circle',
+      position: 'top',
+      acceptIcon: 'pi pi-check',
+      rejectIcon: 'pi pi-times',
+      accept: () => {
+        router.push({name: 'Login'})
+      },
+      reject: () => {
+        toast.add({severity:'success', summary:'Success message', detail:'User created successfully', life: 3000});
+      }
+    });
+  }
 
   // States
   const accessToken = ref("")
@@ -39,27 +56,11 @@ export const StoreAuth = defineStore("StoreAuth", () => {
       } else {
         toast.add({severity:'error', summary: 'Error Message', detail:`${res.message}`, life: 3000});
       }
-      return accessToken.value=res.accessToken
+
     }).catch(err => toast.add({severity:'error', summary: 'Error Message', detail:`${err.response.data.message || err}`, life: 3000}))
   };
 
-  const confirmPosition = () => {
-    confirm.require({
-      group: 'positionDialog',
-      message: 'Do you want to go to Sign In page?',
-      header: 'User created successfully',
-      icon: 'pi pi-info-circle',
-      position: 'top',
-      acceptIcon: 'pi pi-check',
-      rejectIcon: 'pi pi-times',
-      accept: () => {
-        router.push({name: 'Login'})
-      },
-      reject: () => {
-        toast.add({severity:'success', summary:'Success message', detail:'User created successfully', life: 3000});
-      }
-    });
-  }
+
 
   return {
     //Getters
