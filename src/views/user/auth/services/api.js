@@ -11,10 +11,11 @@ class ApiAuth {
     })
   };
 
-  onApiRegister = () => {
+  onApiRegister = (args) => {
     return AxiosInstance({
       method: "post",
       url: "/api/auth/register",
+      data: args
     })
   };
 }

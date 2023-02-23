@@ -36,6 +36,11 @@ const router = createRouter({
       component: () => import('@/views/user/auth/Login.vue')
     },
     {
+      path: '/auth/register',
+      name: 'Register',
+      component: () => import('@/views/user/auth/Register.vue')
+    },
+    {
       path: '/auth/access',
       name: 'AccessDenied',
       component: () => import('@/views/user/auth/Access.vue')

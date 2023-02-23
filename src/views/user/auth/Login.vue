@@ -5,6 +5,7 @@ import AppConfig from '@/layout/AppConfig.vue';
 import { STORE_USER } from "@/services/stores"
 
 const { layoutConfig, contextPath } = useLayout();
+
 const username = ref('');
 const password = ref('');
 const isSaveUser = ref(false);
@@ -46,7 +47,7 @@ const SignIn = () => {
                 <Checkbox v-model="isSaveUser" id="rememberme1" binary class="mr-2"></Checkbox>
                 <label for="rememberme1">Remember me</label>
               </div>
-              <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Forgot password?</a>
+              <a href="/auth/resgiter" class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Register an account?</a>
             </div>
             <Button label="Sign In" class="w-full p-3 text-xl" @click="SignIn()"></Button>
           </div>
