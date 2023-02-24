@@ -25,11 +25,24 @@ export const StoreAccount = defineStore("StoreAccount", () => {
     })
     .catch(err => toast.add({severity:'error', summary: 'Error Message', detail:`${err.response.data.message || err}`, life: 3000}))
   };
+
+  const onActionDeleteUsers = async(args) => {
+    await API_USER.API_ACCOUNT.onApiDeleteUsers(args)
+    .then(({ data: res }) => {
+      if(res.success) {
+        return accounts.value=res.data
+      } else {
+        return toast.add({severity:'error', summary: 'Success Message', detail:`${res.message}`, life: 3000});
+      }
+    })
+    .catch(err => toast.add({severity:'error', summary: 'Error Message', detail:`${err.response.data.message || err}`, life: 3000}))
+  };
   return {
     //Getters
     onGetterAccounts,
 
     //Actions
     onActionGetAllUsers,
+    onActionDeleteUsers
   };
 });

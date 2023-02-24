@@ -13,6 +13,16 @@ class ApiAccount {
     })
   };
 
+  onApiDeleteUsers = (args) => {
+    return AxiosInstance({
+      method: "put",
+      url: `/api/auth/users`,
+      data: args,
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    })
+  };
 }
 
 export const API_ACCOUNT = new ApiAccount();

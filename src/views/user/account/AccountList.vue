@@ -10,8 +10,8 @@ const selectedDistributors = ref([]);
 onMounted(() => {
   STORE_ACCOUNT.onActionGetAllUsers()
 })
-const testFunc = async () => {
-    console.log("test: ", accounts.value)
+const deleteUsers = async () => {
+  STORE_ACCOUNT.onActionDeleteUsers(selectedDistributors.value)
 }
 
 </script>
@@ -35,11 +35,11 @@ const testFunc = async () => {
       <template #header>
         <div class="flex justify-content-between">
           <div class="flex gap-2">
-            <Button label="Thêm mới" @click="testFunc" />
+            <Button label="Thêm mới" @click="deleteUsers" />
             <Button
               label="Xóa"
               class="p-button-danger"
-              @click="testFunc"
+              @click="deleteUsers"
             />
           </div>
         </div>
