@@ -1,11 +1,12 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import {STORE_USER} from '../../../services/stores';
 import { formatDateTime } from "@/components/helper/helper"
 
 const STORE_ACCOUNT = STORE_USER.StoreAccount();
 
 const accounts = STORE_ACCOUNT.onGetterAccounts
+const totalRecords = computed(() => STORE_ACCOUNT.onGetterTotalRecords);
 const selectedDistributors = ref([]);
 onMounted(() => {
   STORE_ACCOUNT.onActionGetAllUsers()
@@ -14,6 +15,20 @@ const deleteUsers = async () => {
   STORE_ACCOUNT.onActionDeleteUsers(selectedDistributors.value)
 }
 
+const params = ref({
+  page: 0,
+  rows: 10,
+  first: 0,
+  paged: true,
+  sort: null,
+})
+
+const onPageChange = (event) => {
+  params.value.page = event.page;
+  params.value.rows = event.rows;
+  params.value.first = event.first;
+  STORE_ACCOUNT.onActionGetAllUsers(params.value)
+};
 </script>
 <template>
   <div>
@@ -25,12 +40,11 @@ const deleteUsers = async () => {
       v-model:selection="selectedDistributors"
       :lazy="true"
       :paginator="true"
-      :rows="10"
-      :first="31"
-      :totalRecords="100"
-      :rowsPerPageOptions="[10, 15, 20, 30]"
+      :rows="params.rows"
+      :totalRecords="totalRecords.value"
+      :rowsPerPageOptions="[5, 10, 15, 20, 30]"
       currentPageReportTemplate="Hiển thị {first} - {last} / tổng {totalRecords} dòng"
-      @page="paginate($event)"
+      @page="onPageChange($event)"
     >
       <template #header>
         <div class="flex justify-content-between">
