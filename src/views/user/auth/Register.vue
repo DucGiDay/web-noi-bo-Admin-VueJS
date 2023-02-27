@@ -59,7 +59,6 @@ const Register = () => {
     </div>
   </div>
   <AppConfig simple />
-  <Toast />
   <ConfirmDialog group="positionDialog"></ConfirmDialog>
 </template>
 

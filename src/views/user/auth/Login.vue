@@ -56,7 +56,6 @@ const SignIn = () => {
     </div>
   </div>
   <AppConfig simple />
-  <Toast />
 </template>
 
 <style scoped>
